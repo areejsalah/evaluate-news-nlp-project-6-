@@ -19,7 +19,9 @@ JAVASCRIPT
 - Server side code
 - Client side code
 
-## Instructions:
+Node and express will be the webserver and routing, and webpack will be our build tool of choice. Using webpack, we will set up the app to have dev and prod environments, each with their own set of tools and commands.
+
+## Project Instructions:
 
 - Setting up Webpack
 - Setting up the API
@@ -27,3 +29,10 @@ JAVASCRIPT
 - Unit Testing using Jest Framework
 - Setting up Service Workers for "Offline Functionality"
 - Deployment
+
+## How to run the project
+1- Go to the src folder
+2- Download the dependencies with: npm i or npm install
+3- After the dependencies are downloaded type: npm run build-prod
+4-  After the build is complete run the app: npm start
+5- The app will be running on localhost:8080
