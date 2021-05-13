@@ -11,8 +11,6 @@ function handleSubmit(event) {
     Client.checkForUrl(urlText)
     console.log(urlText);
 
-    let myUrl = 'http://lifestyle.publico.pt/artigos/369625_as-joias-de-leonor-silva-sao-cotonetes-ou-arame-farpado-em-nome-de-valores-sociais';
-
     fetch('/call', {
 
         method: 'POST',
@@ -21,7 +19,7 @@ function handleSubmit(event) {
         headers: {
             'Content-Type': 'application/json',
         },
-        body: JSON.stringify({myUrl}) //transform data into string to server side
+        body: JSON.stringify({urlText}) //transform data into string to server side
     })
 
 
