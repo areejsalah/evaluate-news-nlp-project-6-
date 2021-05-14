@@ -3,19 +3,17 @@ const { checkForUrl } = require("./urlChecker");
 function handleSubmit(event) {
     event.preventDefault()
 
-    // check what text was put into the form field
     let urlText = document.getElementById('input-url').value
 
-    //Client.checkForName(urlText)
-
-    Client.checkForUrl(urlText)
-    console.log(urlText);
+    // check what text was put into the form field
+    if (checkForUrl(urlText) == true){
+        console.log(urlText);
 
     fetch('/call', {
 
         method: 'POST',
         credentials: 'same-origin',
-        mode: 'cors',   //a menina usou isso
+        mode: 'cors',
         headers: {
             'Content-Type': 'application/json',
         },
@@ -31,14 +29,15 @@ function handleSubmit(event) {
       document.getElementById('results').innerHTML = data.subjectivity
       
       //Updating UI using API data
-      results.innerHTML = `Text: ${data["sentence_list"][0].text} <br> 
-        Subjectivity: ${subjectScore(data.subjectivity)} <br>
-        Irony: ${data.irony} <br>
+      results.innerText = `Text: ${data["sentence_list"][0].text} 
+        Subjectivity: ${subjectScore(data.subjectivity)}
+        Irony: ${data.irony}
         Polarity: ${articlePolarity(data["score_tag"])}`;
       })
-      .catch(err => {
-        console.log(err);
-      })
+
+    }else{
+        alert("Sorry, we couldn't find the requested page. Please, try to use a valid URL. E.g. http://... or https://...");
+    } 
   }
   
   //Function to translate subjectivity score
