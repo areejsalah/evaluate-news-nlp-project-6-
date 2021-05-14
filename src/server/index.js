@@ -1,4 +1,6 @@
 const dotenv = require('dotenv');
+const bodyParser = require('body-parser');
+const cors = require('cors');
 dotenv.config();
 
 const fetch = require('node-fetch')
@@ -6,12 +8,15 @@ var path = require('path')
 const express = require('express')
 const mockAPIResponse = require('./mockAPI.js')
 //API credentials
-const baseURL = 'https://api.meaningcloud.com/sentiment-2.1?lang=auto&url=';
 const API_KEY = process.env.API_KEY
+
 
 const app = express()
 
 app.use(express.static('dist'))
+app.use(bodyParser.json())
+app.use(bodyParser.urlencoded({extended:false}))
+app.use(cors())
 
 console.log(__dirname)
 
@@ -27,23 +32,25 @@ app.get('/test', function (req, res) {
 //Post route
 app.post("/call", async (req, res) => {
     //save the URL entered by the user
-    let articleURL = req.body;
+    let articleURL = req.body.urlText;
 
     console.log('url sent to the server', articleURL);
 
-    const resp = await fetch(baseURL+articleURL+API_KEY);
-    console.log(resp)
+    const resp = await fetch("https://api.meaningcloud.com/sentiment-2.1?key=" + API_KEY + "&url=" + articleURL + "&lang=en");
 
-        try{
-            const data = await resp.json();
-            console.log('Object coming from API', data);
-            
-            //send API data to client side
-            res.send(data);
+    //Data to be extracted from API response
+    //polarity: (positive/'negative')
+    //subjectivity: ('subjective', factual)
+    //text: a text snippet from the article 
 
-        }catch(error){
-            console.log('Error when calling API', error)
-        }
+    try {
+        const data = await resp.json();
+        // console.log(data);
+        //send API data to client side
+        res.send(data);
+      } catch (err) {
+        console.log("error", err);
+      }
 })
 
 // designates what port the app will listen to for incoming requests

@@ -15,63 +15,82 @@ function handleSubmit(event) {
 
         method: 'POST',
         credentials: 'same-origin',
-        //mode: 'cors',   a menina usou isso
+        mode: 'cors',   //a menina usou isso
         headers: {
             'Content-Type': 'application/json',
         },
         body: JSON.stringify({urlText}) //transform data into string to server side
     })
 
+    .then(res => {
+        console.log("::: Form Submitted :::");
+          return res.json()
+      })
+      .then(function(data) {
+      
+      document.getElementById('results').innerHTML = data.subjectivity
+      
+      //Updating UI using API data
+      results.innerHTML = `Text: ${data["sentence_list"][0].text} <br> 
+        Subjectivity: ${subjectScore(data.subjectivity)} <br>
+        Irony: ${data.irony} <br>
+        Polarity: ${articlePolarity(data["score_tag"])}`;
+      })
+      .catch(err => {
+        console.log(err);
+      })
+  }
+  
+  //Function to translate subjectivity score
+  function subjectScore(text) {
+  let textScore;
+  switch (text) {
+        case "OBJECTIVE":
+        textScore = "OBJECTIVE - the text has factual marks.";
+            break;
+        case "SUBJECTIVE":
+        textScore = "SUBJECTIVE - the text has subjective marks.";
+            break;
+        default:
+        textScore = "No subjectivity provided";
+  } // end: switch
+    return textScore;
+  }; 
+  // end: function subjectScore
 
-        .then(function(data) {
-            console.log('objeto vindo do server:', data);
+  //Function to translate Polarity
+  function articlePolarity(text) {
+    let textPolarity;
+    switch (text) {
 
-            try{
-                const apiResponse = data;
+        case "P+":
+            textPolarity = "strong positive";
+            break;
+        case "P":
+            textPolarity = "positive";
+            break;
+        
+        case "NEU":
+            textPolarity = "neutral";
+            break;
 
-                //update UI
-                document.getElementById('results').innerHTML = res;
+        case "N":
+            textPolarity = "negative";
+            break;
+        
+        case "N+":
+            textPolarity = "strong negative";
+            break;
 
-            }catch(error){
-                console.log('erro na hr de atualizar a ui', error)
-            }
-        })
-}
-
-    //Callback function chaining promises
-    //function to post in the server the url entered by the user 
-    //let urlText = document.getElementById('name').value
-    /*postData('/call', data={urlText})
-
-        //Then use the data received from the server to update UI
-        .then(function(data) {
-            console.log('objeto vindo do server:', data);
-
-            try{
-                const apiResponse = data;
-
-                //update UI
-                document.getElementById('results').innerHTML = res;
-
-            }catch(error){
-                console.log('erro na hr de atualizar a ui', error)
-            }
-        })
-}
-
-//Post request - client side
-const callAPI = async(url='', data={}) => {
-
-    const response = await fetch(url, {
-
-        method: 'POST',
-        credentials: 'same-origin',
-        //mode: 'cors',   a menina usou isso
-        headers: {
-            'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(data) //transform data into string to server side
-    })
-}*/
+        case "NONE":
+            textPolarity = "without polarity";
+            break;
+        
+        default:
+            textPolarity = "No polarity provided";
+    } // end: switch
+      return textPolarity;
+    }; 
+    // end: function Polarity
 
 export { handleSubmit }
