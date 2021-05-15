@@ -13,7 +13,6 @@ function handleSubmit(event) {
 
             method: 'POST',
             credentials: 'same-origin',
-            mode: 'cors',
             headers: {
                 'Content-Type': 'application/json',
             },
@@ -47,7 +46,7 @@ function subjectScore(text) {
     if(textScore === 'OBJECTIVE'){
         return textScore = 'OBJECTIVE, factual';
     } else if(textScore === 'SUBJECTIVE'){
-        return textScore = 'SUBJECTIVE, lalalalalal';
+        return textScore = 'SUBJECTIVE';
     } else{
         return 'No subjectivity';
     }
