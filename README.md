@@ -22,8 +22,6 @@ Vanilla js: For client side development
 Webpack: Build tool
 Service workers: Offline functionality
 
-Using webpack, we will set up the app to have dev and prod environments, each with their own set of tools and commands.
-
 ## Project Instructions:
 
 - Setting up Webpack
