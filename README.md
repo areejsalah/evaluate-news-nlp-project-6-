@@ -1,28 +1,26 @@
 # Evaluate-News-NLP Project
 
+This is a project to Udacity's Front End Web Developer course.
+
 ## Overview:
 
-- Udacity project
-- Building a web tool that allows users to run Natural Language Processing (NLP) on articles or blogs found on other websites. (NLP is the ability of an application to understand the human language, written or oral) 
+* Building a web tool that allows users to run Natural Language Processing (NLP) on articles or blogs found on other websites. (NLP is the ability of an application to understand the human language, written or oral) 
 
-The goal of this project is to give you practice with:
-- Setting up Webpack
-- Sass styles
-- Webpack Loaders and Plugins
-- Creating layouts and page design
-- Service workers
-- Using APIs and creating requests to external urls
+* The goal of this project is to get practice with:
+  - Setting up Webpack
+  - Sass styles
+  - Webpack Loaders and Plugins
+  - Creating layouts and page design
+  - Service workers
+  - Using APIs and creating requests to external urls
 
-## Language used:
+* Language and tools for this project:
+  - Node & Express: For server side development
+  - js: For client side development
+  - Webpack: Build tool
+  - Service workers: Offline functionality
 
-JAVASCRIPT
-
-Node & Express: For server side development
-Vanilla js: For client side development
-Webpack: Build tool
-Service workers: Offline functionality
-
-## Project Instructions:
+## Project requirements:
 
 - Setting up Webpack
 - Setting up the API
