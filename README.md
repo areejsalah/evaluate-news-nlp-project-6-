@@ -1,10 +1,16 @@
 # Evaluate-News-NLP Project
 
-This is a project to Udacity's Front End Web Developer course.
+This is a project to [Udacity](https://www.udacity.com/us)'s Front End Web Developer nanodegree.
 
-## Overview:
+## Overview
 
-* Building a web tool that allows users to run Natural Language Processing (NLP) on articles or blogs found on other websites. (NLP is the ability of an application to understand the human language, written or oral) 
+This is a single page web app, which has an input field that accepts a URL as parameter.  
+It works checking if the value entered is a valid URL, if so, it gets data from an API and updates the UI with relevant information about the article of the URL provided, such as subjectivity, polarity and whether or not there are signs of irony in the text.   
+If the value entered is not a valid URL, it displays an alert message telling the user to use a valid URL pattern.
+
+## Project Intro
+
+* Building a web tool that allows users to run Natural Language Processing (NLP) on articles or blogs found on other websites. (NLP is the ability of an application to understand the human language, written or oral)
 
 * The goal of this project is to get practice with:
   - Setting up Webpack
@@ -20,24 +26,48 @@ This is a project to Udacity's Front End Web Developer course.
   - Webpack: Build tool
   - Service workers: Offline functionality
 
-## Project requirements:
+* Project rubric: 
 
-- Setting up Webpack
-- Setting up the API
-- Project Enhancement to ensure most of the requirements as mentioned in the project rubric are met
-- Unit Testing using Jest Framework
-- Setting up Service Workers for "Offline Functionality"
-- Deployment
+Check out the specifications [here](https://review.udacity.com/#!/rubrics/2668/view).
 
-## How to run the project
-Fork this repo, then clone the branch master from your forked repo down to your computer:
+## Getting Started
 
-git clone url
-cd into your new folder and run:
+Follow the steps below to get the project running.
 
-1- npm install
-2- Download the dependencies with: npm i or npm install
-3- After the dependencies are downloaded type: npm run build-prod to generate a dist folder for prod
-(or use npm run build-dev to start the webpack dev server)
-4-  After the build is complete run the app: npm start
-5- The app will be running on localhost:8081
+Clone this Github repository and use [NPM](https://www.w3schools.com/whatis/whatis_npm.asp) to install all the dependencies listed in the _package.json_ file:
+
+```
+$ git clone https://github.com/Janaina-MJ/evaluate-news-nlp.git
+$ cd evaluate-news-nlp
+$ npm install
+```
+
+Then, start the local server:
+
+```
+$ npm run build-prod
+$ npm run start
+```
+
+The app will be running in your browser on localhost:8081
+
+### Runnning the development mode
+
+After completing the steps above, open a second terminal and start the webpack dev server:
+
+`$ npm run build-dev`
+
+The development version of the app will be running in your browser on localhost:8080  
+(the page will automatically update in the browser after any code change)
+
+
+### Testing
+
+This project has a Testing Unit to check if the main functions are working correctly.
+Testing is done with [Jest](https://jestjs.io/). 
+
+To run tests you can use the following NPM command:
+
+`$ npm run test`
+
+The test results will be displayed on the terminal.
