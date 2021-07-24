@@ -13,24 +13,24 @@
     <body>
 
         <header>
-            <div class="">
+            <div class="app-logo">
                 Evaluate News Articles
             </div>
-            <div class="">
+            <div class="app-description">
                 Find relevant information about articles and news, such as subjectivity, polarity and whether or not there are signs of irony in the text.
             </div>
         </header>
 
         <main>
             <section>
-                <form class="" onsubmit="return Client.handleSubmit(event)">
+                <form class="form-entries" onsubmit="return Client.handleSubmit(event)">
                     <label for="input-url">Enter the article URL:</label>
                     <input id="input-url" type="text" name="input" placeholder="E.g. http://">
                     <input type="submit" name="" value="Evaluate" onclick="return Client.handleSubmit(event)" onsubmit="return Client.handleSubmit(event)">
                 </form>
             </section>
 
-            <section>
+            <section class="form-results">
                 <strong>Results:</strong>
                 <div id="results"></div>
             </section>
