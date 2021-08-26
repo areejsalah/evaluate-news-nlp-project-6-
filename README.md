@@ -1,4 +1,4 @@
-# Evaluate-News-NLP Project
+# Evaluate-News-NLP Web App
 
 This is a project to [Udacity](https://www.udacity.com/us)'s Front End Web Developer nanodegree.
 
