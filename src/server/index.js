@@ -6,9 +6,9 @@ dotenv.config();
 const fetch = require('node-fetch')
 var path = require('path')
 const express = require('express')
-const mockAPIResponse = require('./mockAPI.js')
 //API credentials
 const API_KEY = process.env.API_KEY
+console.log(`Your API Key is ${process.env.API_KEY}`);
 
 
 const app = express()
@@ -25,19 +25,22 @@ app.get('/', function (req, res) {
     res.sendFile(path.resolve('dist/index.html'))
 })
 
-app.get('/test', function (req, res) {
-    res.send(mockAPIResponse)
-})
-
 //Post route
-app.post("/call", async (req, res) => {
+app.post('/api', async (req, res) => {
+    
+    
     //save the URL entered by the user
     let articleURL = req.body.urlText;
-
+    
     console.log('url sent to the server', articleURL);
 
+   
+    console.log(`You entered: ${articleURL}`);
+    
+   
     const resp = await fetch("https://api.meaningcloud.com/sentiment-2.1?key=" + API_KEY + "&url=" + articleURL + "&lang=en");
 
+    console.log('response url:', resp);
     //Data to be extracted from API response
     //polarity: (positive/'negative')
     //subjectivity: ('subjective', factual)
@@ -48,6 +51,7 @@ app.post("/call", async (req, res) => {
         // console.log(data);
         //send API data to client side
         res.send(data);
+        console.log("the output",data)
       } catch (err) {
         console.log("error", err);
       }

@@ -1,6 +1,14 @@
-function checkForUrl(inputText) {
-    const userInput = /(http|https):\/\/(\w+:{0,1}\w*@)?(\S+)(:[0-9]+)?(\/|\/([\w#!:.?+=&%@!\-\/]))?/
-    return userInput.test(inputText)
+function checkForUrl(inputURL) {
+    var regex = inputURL.match(/(http(s)?:\/\/.)?(www\.)?[-a-zA-Z0-9@:%._\+~#=]{2,256}\.[a-z]{2,6}\b([-a-zA-Z0-9@:%_\+.~#?&//=]*)/g);
+
+     if(regex == null){
+         return 0;
+     } else{
+     return 1;
+     }
+ 
+   // const userInput = /(http|https):\/\/(\w+:{0,1}\w*@)?(\S+)(:[0-9]+)?(\/|\/([\w#!:.?+=&%@!\-\/]))?/
+   // return userInput.test(inputText)
 }
 
 export { checkForUrl }

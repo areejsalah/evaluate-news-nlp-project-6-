@@ -2,6 +2,7 @@ const { checkForUrl } = require("./urlChecker"); //require external function to 
 
 //Chain Promise to validate user input, make a post request, transform data received from server into json and dynamically update UI 
 function handleSubmit(event) {
+    results.innerText ="";
     //First, prevent the submit button DOM element of doing his normal behavior of send info directly to server
     event.preventDefault()
     //So we can catch the URL entered by the user into the form field
@@ -14,7 +15,7 @@ function handleSubmit(event) {
         console.log(urlText);
 
         //and send it to server side by making a call to a post route and passing the "request object" one of it's parameters
-        fetch('/call', {
+        fetch('http://localhost:8081/api', {
 
             method: 'POST',
             credentials: 'same-origin',
@@ -31,13 +32,13 @@ function handleSubmit(event) {
             //display a message in the console
             console.log("::: Form Submitted :::");
             //and transform the data into json to be used in the client side
+            console.log(res);
             return res.json()
         })
 
         //then, create a function passing that data as argument
         .then(function(data) {
         
-            //select the DOM element which will be dynamically updated whit the new data
             const results = document.getElementById('results');
             
             //Finally update UI using information extracted from the API data
@@ -47,7 +48,9 @@ function handleSubmit(event) {
                 Subjectivity: ${subjectScore(data.subjectivity)}
                 Irony: ${data.irony}
                 Polarity: ${articlePolarity(data["score_tag"])}`;
+                console.log(data);
         })
+        
     
     //Else, let the user know that the url provided by them was not found, advising them to ensure they are using the correct url pattern
     }else{
@@ -80,37 +83,37 @@ function subjectScore(text) {
 function articlePolarity(text) {
 
     //store the data in a variable and re-assign its value according the following situations
-    let textPolarity = text;
+   let textPolarity = text;
 
     //if the data received is equal 'p+'
     if(textPolarity == 'P+'){
         //assign a new value to the variable and return it
-         return textPolarity = 'strong positive';
+         return textPolarity = 'STRONG POSITIVE';
 
     //else if the data received is equal 'p'
     } else if(textPolarity == 'P'){
         //assign a new value to the variable and return it
-        return textPolarity = 'positive';
+        return textPolarity = 'POSITIVE';
     //else if the data received is equal 'neu'
     } else if(textPolarity == 'NEU'){
         //assign a new value to the variable and return it
-        return textPolarity = 'neutral';
+        return textPolarity = 'NEUTRAL';
     //else if the data received is equal 'n'
     } else if(textPolarity == 'N'){
         //assign a new value to the variable and return it
-        return textPolarity = 'negative';
+        return textPolarity = 'NEGATIVE';
     //else if the data received is equal 'n+'
     }  else if(textPolarity == 'N+'){
         //assign a new value to the variable and return it
-        return textPolarity = 'strong negative';
+        return textPolarity = 'STRONG NEGATIVE';
     //else if the data received is equal 'none'
     }  else if(textPolarity == 'NONE'){
         //assign a new value to the variable and return it
-        return textPolarity = 'without polarity';
+        return textPolarity = 'NO SENTIMENT';
     //else, define a default return
     }  else{
-        return 'No Polarity';
-    }
+        return 'NO POLARITY';
+    } 
 }
 
 //exports the functions to index.js which is our main file
