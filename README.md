@@ -29,15 +29,14 @@ If the value entered is not a valid URL, it displays an alert message telling th
 ## Getting Started
 
 Follow the steps below to get the project running.
-
-Clone this Github repository and use [NPM](https://www.w3schools.com/whatis/whatis_npm.asp) to install all the dependencies listed in the _package.json_ file:
+1. Clone this Github repository and use [NPM](https://www.w3schools.com/whatis/whatis_npm.asp) to install all the dependencies listed in the _package.json_ file:
 
 ```
-$ git clone https://github.com/areejsalah/evaluate-news-nlp-project-6-.git)
+$ git clone https://github.com/areejsalah/evaluate-news-nlp-project-6-.git
 $ cd evaluate-news-nlp
 $ npm install
 ```
-Install loaders and plugins
+2. Install loaders and plugins
 
 ```
 # Choose the necessary installation for your development mode
@@ -49,24 +48,24 @@ npm i -D mini-css-extract-plugin
 npm i -D optimize-css-assets-webpack-plugin terser-webpack-plugin
 ```
 
-Sign up for an API key at meaningcloud.com
+3. Sign up for an API key at [meaningcloud.com](https://www.meaningcloud.com/)
 
-Configure environment variables using dotenv package
+4. Configure environment variables using dotenv package
 
-Install the dotenv package
+* Install the dotenv package
 
 ```
 npm install dotenv
 ```
-Create a new .env file in the root of your project
-Fill the .env file with your API key like this:
+* Create a new .env file in the root of your project
+* Fill the .env file with your API key like this:
 
 ```
 API_KEY=**************************
 ```
 
 
-Then, start the local server:
+5. Then, start the local server:
 
 ```
 $ npm run build-prod
