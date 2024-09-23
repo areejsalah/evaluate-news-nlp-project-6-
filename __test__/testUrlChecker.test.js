@@ -9,4 +9,6 @@ describe("Testing the URL entered by the user", () => {
         // The expect() function, in combination with a Jest matcher, is used to check if the function produces the expected output
         // The general syntax is `expect(myFunction(arg1, arg2, ...)).toEqual(expectedValue);`, where `toEqual()` is a matcher
         expect(checkForUrl(url)).toBe(1);
+        expect(checkForUrl('.www.346/23@')).toBe(0);
+        expect(checkForUrl('')).toBe(0);
 })});
