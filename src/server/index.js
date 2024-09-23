@@ -25,12 +25,10 @@ app.get('/', function (req, res) {
     res.sendFile(path.resolve('dist/index.html'))
 })
 
-app.get('/test', function (req, res) {
-    res.send(mockAPIResponse)
-})
+
 
 //Post route
-app.post("/call", async (req, res) => {
+app.post("/api", async (req, res) => {
     //save the URL entered by the user
     let articleURL = req.body.urlText;
 

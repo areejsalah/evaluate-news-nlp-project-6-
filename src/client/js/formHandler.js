@@ -14,7 +14,7 @@ function handleSubmit(event) {
         console.log(urlText);
 
         //and send it to server side by making a call to a post route and passing the "request object" one of it's parameters
-        fetch('/call', {
+        fetch('https://localhost:8000/api', {
 
             method: 'POST',
             credentials: 'same-origin',
