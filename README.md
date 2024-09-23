@@ -94,3 +94,11 @@ To run tests you can use the following NPM command:
 `$ npm run test`
 
 The test results will be displayed on the terminal.
+
+![11](https://github.com/user-attachments/assets/1ffcccb2-432f-4696-9a53-2268fa1cfa9a)
+
+The page built for this project is a simple one. It has a form with a single filed which receives an input. This input is checked for valid url. A helpful alert message is displayed for invalid url. If the url is valid, then an api call is performed and the result displayed on the page.
+
+![000](https://github.com/user-attachments/assets/7b4b471a-7602-46eb-bcc8-c4788182d55e)
+
+
