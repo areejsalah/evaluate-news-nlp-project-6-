@@ -44,8 +44,8 @@ function handleSubmit(event) {
             //Finally update UI using information extracted from the API data
             //use innerText to insert text into the element selected previously and write it using Template String
             //go through data properties using dot notation and sometimes brackets to access its arrays
-            results.innerText = `Text: ${data["sentence_list"][0].text} 
-                Subjectivity: ${subjectScore(data.subjectivity)}
+            results.innerText = //`Text: ${data["sentence_list"][0].text} 
+                `Subjectivity: ${subjectScore(data.subjectivity)}
                 Irony: ${data.irony}
                 Polarity: ${articlePolarity(data["score_tag"])}`;
                 console.log(data);
